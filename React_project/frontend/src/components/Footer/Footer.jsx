@@ -31,9 +31,6 @@ export default function Footer() {
         </nav>
       </div>
 
-      <p className="site-footer__copyright">
-        © {new Date().getFullYear()} ElectroShop. Проектная деятельность, этап 3.
-      </p>
     </footer>
   );
 }
