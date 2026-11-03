@@ -1,0 +1,11 @@
+.orders-page__count {
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.orders-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
