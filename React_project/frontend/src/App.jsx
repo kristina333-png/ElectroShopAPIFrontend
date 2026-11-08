@@ -8,6 +8,8 @@ import CartPage from "./pages/CartPage/CartPage.jsx";
 import OrdersPage from "./pages/OrdersPage/OrdersPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import RegisterPage from "./pages/RegisterPage/RegisterPage.jsx";
+import ProductCreatePage from "./pages/ProductCreatePage/ProductCreatePage.jsx";
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="orders" element={<OrdersPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="products/new" element={<ProductCreatePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
