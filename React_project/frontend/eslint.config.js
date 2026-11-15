@@ -24,6 +24,8 @@ export default defineConfig([
     },
     rules: {
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      // Загрузка данных: установка loading/error внутри useEffect — осознанный паттерн проекта.
+      "react-hooks/set-state-in-effect": "off",
     },
   },
   {

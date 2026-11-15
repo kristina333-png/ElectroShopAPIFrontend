@@ -9,26 +9,42 @@ export default function AdminDashboardPage() {
 
   return (
     <section className="admin-dashboard">
-      <SectionHeader 
-        title="Панель администратора" 
-        subtitle={`Вы вошли как ${user?.email} (${user?.role})`} 
+      <SectionHeader
+        title="Панель администратора"
+        subtitle={`Вы вошли как ${user?.email} (${user?.role})`}
       />
 
       <div className="admin-dashboard__grid">
         <div className="admin-dashboard__card">
-          <h3>Управление каталогом</h3>
-          <p>Добавление новых товаров.</p>
+          <h3>Товары и картинки</h3>
+          <p>Загрузка картинок и управление каталогом.</p>
+          <Link to="/admin/products" className="admin-dashboard__button">
+            Управлять товарами
+          </Link>
+        </div>
+
+        <div className="admin-dashboard__card">
+          <h3>Добавить товар</h3>
+          <p>Новая позиция в каталоге с картинкой.</p>
           <Link to="/products/new" className="admin-dashboard__button">
-            Добавить новый товар
+            Добавить товар
           </Link>
         </div>
 
         <div className="admin-dashboard__card">
           <h3>Управление заказами</h3>
-          <p>Просмотр всех заказов и смена статусов.</p>
-          <button disabled className="admin-dashboard__button">
-            Все заказы (в разработке)
-          </button>
+          <p>Все заказы, смена статусов и создание заказа для клиента.</p>
+          <Link to="/admin/orders" className="admin-dashboard__button">
+            Управлять заказами
+          </Link>
+        </div>
+
+        <div className="admin-dashboard__card">
+          <h3>Конфигуратор сайта</h3>
+          <p>Название магазина, телефон, адрес, цвета темы и тексты.</p>
+          <Link to="/admin/configurator" className="admin-dashboard__button">
+            Настроить сайт
+          </Link>
         </div>
       </div>
 

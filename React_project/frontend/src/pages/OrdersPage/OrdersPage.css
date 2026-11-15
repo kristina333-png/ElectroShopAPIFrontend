@@ -54,6 +54,28 @@
   font-weight: 600;
 }
 
+.orders-page__state {
+  margin-top: 20px;
+  color: var(--color-muted);
+}
+
+.order-card__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 8px;
+  padding: 0 0 8px;
+  font-size: 13px;
+  list-style: none;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.order-card__items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .order-card__status {
   display: inline-block;
   padding: 4px 10px;
@@ -64,4 +86,24 @@
   color: var(--color-primary);
   width: fit-content;
   margin-top: 8px;
+}
+
+.order-card__status--processing {
+  background-color: #fff7e6;
+  color: #b45309;
+}
+
+.order-card__status--shipped {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.order-card__status--delivered {
+  background-color: #ecfdf3;
+  color: #039855;
+}
+
+.order-card__status--cancelled {
+  background-color: #fef3f2;
+  color: #d92d20;
 }

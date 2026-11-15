@@ -9,7 +9,7 @@ export default function UserInfo() {
     try {
       await handleLogout();
     } catch {
-
+      // Ошибку выхода не показываем: состояние пользователя всё равно сбрасывается.
     }
   }
 

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext.jsx";
 import "./Navigation.css";
 
 const LINKS = [
@@ -9,10 +11,18 @@ const LINKS = [
 ];
 
 export default function Navigation() {
+  const { user } = useContext(AuthContext);
+
+  // «Конфигуратор» сайта доступен только администратору.
+  const links =
+    user?.role === "Admin"
+      ? [...LINKS, { to: "/admin/configurator", label: "Конфигуратор" }]
+      : LINKS;
+
   return (
     <nav className="navigation" aria-label="Основная навигация">
       <div className="navigation__inner">
-        {LINKS.map((link) => (
+        {links.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}

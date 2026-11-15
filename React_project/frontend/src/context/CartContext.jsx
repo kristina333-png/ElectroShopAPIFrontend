@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useEffect, useContext } from "react";
 
 export const CartContext = createContext(null);
@@ -35,7 +36,9 @@ export function CartProvider({ children }) {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice }}
+    >
       {children}
     </CartContext.Provider>
   );

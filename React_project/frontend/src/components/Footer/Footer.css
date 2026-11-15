@@ -25,6 +25,31 @@
   color: var(--color-muted);
 }
 
+.site-footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--color-muted);
+  list-style: none;
+}
+
+.site-footer__contacts li {
+  display: flex;
+  gap: 6px;
+}
+
+.site-footer__contacts span {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.site-footer__contacts a:hover {
+  color: var(--color-primary);
+}
+
 .site-footer__column {
   display: flex;
   flex-direction: column;

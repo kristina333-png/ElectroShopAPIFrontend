@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext.jsx";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import { useToast } from "../../context/ToastContext.jsx";
 import { createOrder } from "../../api/products.js";
 import SectionHeader from "../../components/SectionHeader/SectionHeader.jsx";
 import { formatPrice } from "../../utils/format.js";
@@ -10,6 +11,7 @@ import "./CartPage.css";
 export default function CartPage() {
   const { cartItems, removeFromCart, totalPrice, clearCart } = useCart();
   const { user } = useContext(AuthContext);
+  const { showToast } = useToast();
   const navigate = useNavigate();
   
   const [address, setAddress] = useState("");
@@ -18,7 +20,7 @@ export default function CartPage() {
 
   async function handleCheckout() {
     if (!user) {
-      alert("Войдите в аккаунт, чтобы оформить заказ");
+      showToast("Войдите в аккаунт, чтобы оформить заказ", "info");
       navigate("/login");
       return;
     }
@@ -43,7 +45,7 @@ export default function CartPage() {
 
       await createOrder(orderData, user.token);
       
-      alert("Заказ успешно оформлен!");
+      showToast("Заказ успешно оформлен");
       clearCart();
       navigate("/orders"); 
 

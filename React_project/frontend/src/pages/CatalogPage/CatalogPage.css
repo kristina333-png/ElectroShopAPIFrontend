@@ -26,6 +26,12 @@
   color: var(--color-muted, #667085);
 }
 
+.catalog-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
 @media (max-width: 900px) {
   .catalog-page__layout {
     grid-template-columns: 1fr; 
