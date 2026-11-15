@@ -1,0 +1,30 @@
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.register-page__content {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-page__link {
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.register-page__link a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-page__link a:hover {
+  text-decoration: underline;
+}

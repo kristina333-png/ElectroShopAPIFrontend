@@ -26,7 +26,7 @@ export default function RegisterForm() {
     setIsLoading(true);
     try {
       await registerUser(trimmedEmail, password);
-      setSuccess("Регистрация выполнена");
+      setSuccess(`Вы успешно зарегистрированы с почтой: ${trimmedEmail}!`);
       setEmail("");
       setPassword("");
       setConfirmPassword("");

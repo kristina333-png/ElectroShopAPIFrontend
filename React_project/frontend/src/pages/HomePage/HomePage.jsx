@@ -1,12 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import SectionHeader from "../../components/SectionHeader/SectionHeader.jsx";
 import CategoryCard from "../../components/CategoryCard/CategoryCard.jsx";
 import ProductList from "../../components/ProductList/ProductList.jsx";
-import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "../../mockData.js";
+import { getProducts } from "../../api/products.js";
+import { MOCK_CATEGORIES } from "../../mockData.js"; // Оставляем категории для красоты
 import "./HomePage.css";
 
 export default function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((data) => setProducts(data.slice(0, 3))).catch(console.error);
+  }, []);
+
   return (
     <div className="home-page">
       <section className="home-hero">
@@ -17,17 +25,8 @@ export default function HomePage() {
           <SearchBar onSubmit={() => {}} placeholder="Например: iPhone" />
           <div className="home-hero__actions">
             <Link to="/catalog" className="home-hero__button">Перейти в каталог</Link>
-            <Link to="/orders" className="home-hero__link">Мои заказы</Link>
           </div>
         </div>
-        <aside className="home-hero__panel">
-          <p className="home-hero__panel-title">Почему ElectroShop</p>
-          <ul className="home-hero__panel-list">
-            <li><span aria-hidden="true">⚡</span> Четыре категории и проверенные бренды</li>
-            <li><span aria-hidden="true">🔐</span> Личный кабинет и история заказов</li>
-            <li><span aria-hidden="true">📦</span> Остатки склада обновляются автоматически</li>
-          </ul>
-        </aside>
       </section>
 
       <section className="home-section">
@@ -41,7 +40,7 @@ export default function HomePage() {
 
       <section className="home-section">
         <SectionHeader title="Хиты каталога" subtitle="Первые позиции" linkTo="/catalog" />
-        <ProductList products={MOCK_PRODUCTS.slice(0, 3)} />
+        <ProductList products={products} />
       </section>
     </div>
   );

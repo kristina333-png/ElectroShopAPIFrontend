@@ -32,3 +32,34 @@ export async function createProduct(product, token) {
     throw new Error("Не удалось добавить товар");
   }
 }
+
+
+export async function createOrder(orderData, token) {
+  const response = await fetch(`${API_BASE_URL}/orders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(orderData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    throw new Error(errorData?.error || "Не удалось создать заказ");
+  }
+  return await response.json();
+}
+
+export async function getMyOrders(token) {
+  const response = await fetch(`${API_BASE_URL}/orders/my`, {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Не удалось загрузить заказы");
+  }
+  return await response.json();
+}

@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext.jsx";
 import { formatPrice } from "../../utils/format.js";
 import { getCategoryIcon, getProductGradient } from "../../utils/product.js";
 import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart(); 
+
   return (
     <article className="product-card">
       <Link to={`/catalog/${product.id}`} className="product-card__link">
-        <div
-          className="product-card__media"
-          style={{ backgroundImage: getProductGradient(product.id) }}
-        >
+        <div className="product-card__media" style={{ backgroundImage: getProductGradient(product.id) }}>
           <span className="product-card__icon" aria-hidden="true">
             {getCategoryIcon(product.category?.name)}
           </span>
@@ -27,8 +27,14 @@ export default function ProductCard({ product }) {
         </div>
       </Link>
       <div className="product-card__footer">
-        {}
-        <button type="button" className="product-card__button">
+        <button 
+          type="button" 
+          className="product-card__button"
+          onClick={() => {
+            addToCart(product);
+            alert(`Товар "${product.name}" добавлен в корзину!`);
+          }} 
+        >
           В корзину
         </button>
       </div>
